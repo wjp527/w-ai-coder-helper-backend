@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: w-ai-coder-helper-backend
+  profiles:
+    active: local
