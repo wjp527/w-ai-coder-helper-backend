@@ -14,7 +14,15 @@ class AiCodeHelperServiceTest {
 
     @Test
     void chat() {
-        String result = aiCodeHelperService.chat("您好，我是程序员鱼皮");
+        String result = aiCodeHelperService.chat(1, "我想吃苹果");
+        System.out.println("结果: " + result);
+    }
+
+    @Test
+    void chatWithMemory() {
+        String result = aiCodeHelperService.chat(2,"您好，我是程序员鱼皮");
+        System.out.println("结果: " + result);
+        result = aiCodeHelperService.chat(2,"您好，我是饿了吗");
         System.out.println("结果: " + result);
     }
 }
