@@ -1,6 +1,7 @@
 package com.wjp.waicoderhelperbackend.ai;
 
 import dev.langchain4j.service.MemoryId;
+import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 
@@ -28,5 +29,9 @@ public interface AiCodeHelperService {
     record Report(String name, List<String> suggestionList) {}
 
 
+    // 返回封装后的结果【token消耗数、数据来源、返回结果】
+    // 指定本地文件
+    @SystemMessage(fromResource = "system-prompt.txt")
+    Result<String> chatWithRAG(@MemoryId int memoryId, @UserMessage String userMessage);
 
 }

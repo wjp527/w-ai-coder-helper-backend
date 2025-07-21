@@ -3,6 +3,7 @@ package com.wjp.waicoderhelperbackend.ai;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,11 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private ChatModel qwenChatModel;
 
+    /**
+     * 内容加载器
+     */
+    @Resource
+    private ContentRetriever contentRetriever;
 
     @Bean
     public AiCodeHelperService aiCodeHelperService() {
@@ -30,6 +36,8 @@ public class AiCodeHelperServiceFactory {
                 .chatMemory(chatMemory)
                 // 基于memoryId 进行会话隔离
                 .chatMemoryProvider(memoryId -> MessageWindowChatMemory.withMaxMessages(10))
+                // 设置内容检索器【RAG检索增强生成】
+                .contentRetriever(contentRetriever)
                 .build();
         // 创建AI服务的接口类别
         return aiCodeHelperService;

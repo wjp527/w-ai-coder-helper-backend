@@ -49,6 +49,20 @@
             <version>1.1.0</version>
         </dependency>
 
+        <!-- 极简版 RAG -->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-easy-rag</artifactId>-->
+<!--            <version>1.1.0-beta7</version>-->
+<!--        </dependency>-->
+
+        <!-- LangChain4j 与 Spring Boot 集成的核心入口 -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <version>1.1.0-beta7</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
