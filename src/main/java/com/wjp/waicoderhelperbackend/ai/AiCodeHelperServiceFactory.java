@@ -1,6 +1,7 @@
 package com.wjp.waicoderhelperbackend.ai;
 
 import com.wjp.waicoderhelperbackend.ai.tools.InterviewQuestionTool;
+import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
@@ -25,6 +26,12 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private ContentRetriever contentRetriever;
 
+    /**
+     * MCP工具提供者
+     */
+    @Resource
+    private McpToolProvider mcpToolProvider;
+
     @Bean
     public AiCodeHelperService aiCodeHelperService() {
         // 会话记忆 限制最多保存10条对话记录
@@ -41,6 +48,8 @@ public class AiCodeHelperServiceFactory {
                 .contentRetriever(contentRetriever)
                 // 工具调用
                 .tools(new InterviewQuestionTool())
+                // MCP 工具调用
+                .toolProvider(mcpToolProvider)
                 .build();
         // 创建AI服务的接口类别
         return aiCodeHelperService;

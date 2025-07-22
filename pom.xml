@@ -70,6 +70,14 @@
             <version>1.20.1</version>
         </dependency>
 
+        <!-- LangChain4j MCP服务 -->
+        <!-- https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-mcp -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-mcp</artifactId>
+            <version>1.1.0-beta7</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>

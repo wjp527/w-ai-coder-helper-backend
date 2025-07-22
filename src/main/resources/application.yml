@@ -14,3 +14,7 @@ langchain4j:
       embedding-model:
         model-name: text-embedding-v4
         api-key: xxx
+
+bigmodel:
+  api-key: <Your Api Key>
+

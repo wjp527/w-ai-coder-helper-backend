@@ -53,4 +53,10 @@ class AiCodeHelperServiceTest {
         System.out.println("结果: " + result);
     }
 
+    @Test
+    void chatWithMCP() {
+        String result = aiCodeHelperService.chat(5,"您好，你知道玉米蛋挞怎么做吗？");
+        System.out.println("结果: " + result);
+    }
+
 }

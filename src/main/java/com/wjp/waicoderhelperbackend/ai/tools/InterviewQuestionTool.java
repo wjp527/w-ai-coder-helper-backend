@@ -41,7 +41,7 @@ public class InterviewQuestionTool {
                     .timeout(5000)
                     .get();
         } catch (IOException e) {
-            log.error("get web error", e);
+//            log.error("get web error", e);
             return e.getMessage();
         }
         // 提取面试题
