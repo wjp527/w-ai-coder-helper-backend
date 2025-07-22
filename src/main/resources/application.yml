@@ -3,17 +3,27 @@ spring:
     name: w-ai-coder-helper-backend
   profiles:
     active: local
+server:
+  port: 8082
+  servlet:
+    context-path: /api
 
 # AI 模型
 langchain4j:
   community:
     dashscope:
+      #  聊天模型
       chat-model:
         model-name: qwen-max
-        api-key: xxx
+        api-key: <Your Api Key>
+      # embedding 模型
       embedding-model:
         model-name: text-embedding-v4
-        api-key: xxx
+        api-key: <Your Api Key>
+      # 流式模型
+      streaming-chat-model:
+        model-name: qwen-max
+        api-key: <Your Api Key>
 
 bigmodel:
   api-key: <Your Api Key>

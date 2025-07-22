@@ -5,6 +5,7 @@ import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 public class AiCodeHelperServiceFactory {
 
     @Resource
-    private ChatModel myQwenChatModel;
+    private ChatModel qwenChatModel;
 
     /**
      * 内容加载器
@@ -32,6 +33,12 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private McpToolProvider mcpToolProvider;
 
+    /**
+     * 流式输出模型
+     */
+    @Resource
+    private StreamingChatModel qwenStreamingChatModel;
+
     @Bean
     public AiCodeHelperService aiCodeHelperService() {
         // 会话记忆 限制最多保存10条对话记录
@@ -39,7 +46,9 @@ public class AiCodeHelperServiceFactory {
         // 构造 AI Service
         AiCodeHelperService aiCodeHelperService = AiServices.builder(AiCodeHelperService.class)
                 // 模型
-                .chatModel(myQwenChatModel)
+                .chatModel(qwenChatModel)
+                // 流式输出(SSE)
+                .streamingChatModel(qwenStreamingChatModel)
                 // 会话记忆
                 .chatMemory(chatMemory)
                 // 基于memoryId 进行会话隔离
