@@ -46,4 +46,11 @@ class AiCodeHelperServiceTest {
         System.out.println("输出结果: " + result.content());
     }
 
+
+    @Test
+    void chatWithTools() {
+        String result = aiCodeHelperService.chat(4,"您好，有哪些热门的Java面试题");
+        System.out.println("结果: " + result);
+    }
+
 }
