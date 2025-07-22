@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class AiCodeHelperServiceFactory {
 
     @Resource
-    private ChatModel qwenChatModel;
+    private ChatModel myQwenChatModel;
 
     /**
      * 内容加载器
@@ -39,7 +39,7 @@ public class AiCodeHelperServiceFactory {
         // 构造 AI Service
         AiCodeHelperService aiCodeHelperService = AiServices.builder(AiCodeHelperService.class)
                 // 模型
-                .chatModel(qwenChatModel)
+                .chatModel(myQwenChatModel)
                 // 会话记忆
                 .chatMemory(chatMemory)
                 // 基于memoryId 进行会话隔离
